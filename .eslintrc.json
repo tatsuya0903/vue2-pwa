@@ -13,5 +13,16 @@
   "parserOptions": {
     "ecmaVersion": 2020
   },
-  "rules": {}
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "printWidth": 100,
+        "singleQuote": true,
+        "semi": false,
+        "htmlWhitespaceSensitivity": "ignore",
+        "trailingComma": "all"
+      }
+    ]
+  }
 }
