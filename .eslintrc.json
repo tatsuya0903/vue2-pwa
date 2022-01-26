@@ -34,6 +34,7 @@
     "vue/v-bind-style": ["ERROR", "longform"],
     "vue/v-on-style": ["ERROR", "longform"],
     "vue/v-slot-style": ["ERROR", "longform"],
-    "vue/no-v-html": "off"
+    "vue/no-v-html": "off",
+    "@typescript-eslint/ban-types": "off"
   }
 }
