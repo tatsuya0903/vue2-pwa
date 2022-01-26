@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { GenerateSW } = require('workbox-webpack-plugin')
+
 module.exports = {
   pages: {
     index: {
@@ -10,4 +13,13 @@ module.exports = {
   productionSourceMap: process.env.NODE_ENV !== 'production',
 
   transpileDependencies: ['vuetify'],
+
+  // PWA
+  configureWebpack: (config) => {
+    config.plugins.push(
+      new GenerateSW({
+        skipWaiting: true,
+      }),
+    )
+  },
 }
