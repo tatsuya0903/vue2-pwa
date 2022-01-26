@@ -30,6 +30,10 @@
         "selector": "TSEnumDeclaration",
         "message": "Don't declare enums"
       }
-    ]
+    ],
+    "vue/v-bind-style": ["ERROR", "longform"],
+    "vue/v-on-style": ["ERROR", "longform"],
+    "vue/v-slot-style": ["ERROR", "longform"],
+    "vue/no-v-html": "off"
   }
 }
