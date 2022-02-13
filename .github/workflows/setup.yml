@@ -46,7 +46,10 @@ jobs:
                         -To $title
       - name: README.mdを更新
         run: |
-          Set-Content -Path ./README.md '# ${{ github.event.inputs.title }}'
+          Set-Content -Path ./README.md @"
+          # ${{ github.event.inputs.title }}(${{ github.event.inputs.projectName }})
+          
+          "@
       - name: ワークフロー(setup)を削除
         run: |
           Remove-Item ./.github/workflows/setup.yml
