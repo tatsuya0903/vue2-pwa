@@ -23,8 +23,8 @@ jobs:
       - name: ファイル置換
         run: |
           function ReplaceFile($FilePath, $From, $To) {
-            $text = (Get-Content $FilePath) -replace "vue2-pwa", "nfc-reader"
-            Set-Content  -Path $FilePath -Value $text
+            $text = (Get-Content $FilePath).Replace($From, $To)
+            Set-Content -Path $FilePath -Value $text
           }
           function ReplaceFiles($FilePaths, $From, $To) {
             foreach ($FilePath in $FilePaths) {
