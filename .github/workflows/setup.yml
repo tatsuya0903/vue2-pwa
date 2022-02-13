@@ -36,14 +36,20 @@ jobs:
           $projectName = '${{ github.event.inputs.projectName }}'
           $title = '${{ github.event.inputs.title }}'
           
-          # テキスト置換： vue2-pwa → drive-recorder
+          # テキスト置換： vue2-pwa → projectName
           ReplaceFiles  -FilePaths @('./package.json', './package-lock.json', './public/404.html', './.env') `
                         -From "vue2-pwa" `
                         -To $projectName          
-          # テキスト置換： Vue2+PWA → ドライブレコーダー
-          ReplaceFiles  -FilePaths @('README.md', './.env') `
+          # テキスト置換： Vue2+PWA → title
+          ReplaceFiles  -FilePaths @('./.env') `
                         -From "Vue2+PWA" `
                         -To $title
+      - name: README.mdを更新
+        run: |
+          Set-Content -Path ./README.md @"
+          # ${{ github.event.inputs.title }}(${{ github.event.inputs.projectName }})
+          
+          "@
       - name: ワークフロー(setup)を削除
         run: |
           Remove-Item ./.github/workflows/setup.yml
