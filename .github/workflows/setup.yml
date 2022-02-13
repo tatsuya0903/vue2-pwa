@@ -41,7 +41,7 @@ jobs:
                         -From "vue2-pwa" `
                         -To $projectName          
           # テキスト置換： Vue2+PWA → title
-          ReplaceFiles  -FilePaths @('./.env') `
+          ReplaceFiles  -FilePaths @('./.env', './public/manifest.json') `
                         -From "Vue2+PWA" `
                         -To $title
       - name: README.mdを更新
