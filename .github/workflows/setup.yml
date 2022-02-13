@@ -44,6 +44,9 @@ jobs:
           ReplaceFiles  -FilePaths @('README.md', './.env') `
                         -From "Vue2+PWA" `
                         -To $title
+      - name: ワークフロー(setup)を削除
+        run: |
+          Remove-Item ./.github/workflows/setup.yml
       - name: コミット
         run: |
           git --version
