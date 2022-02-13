@@ -1,10 +1,52 @@
 name: setup
 on:
   workflow_dispatch:
+    inputs:
+      projectName:
+        description: 'プロジェクト名'
+        required: true
+      title:
+        description: 'タイトル'
+        required: true
 jobs:
   setup:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: pwsh
     steps:
       - uses: actions/checkout@v2
-      - name: Run a one-line script
-        run: echo Hello, world!
+      - name: ファイル置換
+        run: |
+          function ReplaceFile($FilePath, $From, $To) {
+            $text = (Get-Content $FilePath) -replace "vue2-pwa", "nfc-reader"
+            Set-Content  -Path $FilePath -Value $text
+          }
+          function ReplaceFiles($FilePaths, $From, $To) {
+            foreach ($FilePath in $FilePaths) {
+              ReplaceFile $FilePath $From $To
+            }
+          }
+          
+          # 設定値
+          $projectName = '${{ github.event.inputs.projectName }}'
+          $title = '${{ github.event.inputs.$title }}'
+          
+          # テキスト置換： vue2-pwa → drive-recorder
+          ReplaceFiles  -FilePaths @('./package.json', './package-lock.json', './public/404.html', './.env') `
+                        -From "vue2-pwa" `
+                        -To $projectName          
+          # テキスト置換： Vue2+PWA → ドライブレコーダー
+          ReplaceFiles  -FilePaths @('README.md', './.env') `
+                        -From "Vue2+PWA" `
+                        -To $title
+      - name: コミット
+        run: |
+          git --version
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git branch -a
+          git checkout -b issue10-test
+          git add --all
+          git commit -a -m "セットアップ"
+          git push --force origin gh-pages
