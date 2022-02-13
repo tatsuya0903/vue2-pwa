@@ -1,24 +1,5 @@
 # Vue2+PWA(テンプレート)
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## 使い方
+1. ワークフロー(setup)を実行する
+2. プロジェクトをWebStormで開いて、プロジェクト名を変更
