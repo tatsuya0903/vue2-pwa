@@ -30,7 +30,7 @@ jobs:
           
           # 設定値
           $projectName = '${{ github.event.inputs.projectName }}'
-          $title = '${{ github.event.inputs.$title }}'
+          $title = '${{ github.event.inputs.title }}'
           
           # テキスト置換： vue2-pwa → drive-recorder
           ReplaceFiles  -FilePaths @('./package.json', './package-lock.json', './public/404.html', './.env') `
