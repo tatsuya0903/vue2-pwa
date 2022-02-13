@@ -8,6 +8,10 @@ on:
       title:
         description: 'タイトル'
         required: true
+      branchName:
+        description: 'ブランチ名'
+        required: true
+        default: 'main'
 jobs:
   setup:
     runs-on: ubuntu-latest
@@ -46,7 +50,7 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
           git branch -a
-          git checkout -b issue10-test
+          git checkout -b ${{ github.event.inputs.branchName }}
           git add --all
           git commit -a -m "セットアップ"
-          git push --force origin issue10-test
+          git push origin ${{ github.event.inputs.branchName }}
