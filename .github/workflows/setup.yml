@@ -49,4 +49,4 @@ jobs:
           git checkout -b issue10-test
           git add --all
           git commit -a -m "セットアップ"
-          git push --force origin gh-pages
+          git push --force origin issue10-test
