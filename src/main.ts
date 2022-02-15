@@ -6,6 +6,8 @@ import store from './store'
 import VueCompositionAPI from '@vue/composition-api'
 import vuetify from './plugins/vuetify'
 
+const dummy = '123'
+
 Vue.config.productionTip = false
 Vue.use(VueCompositionAPI)
 
